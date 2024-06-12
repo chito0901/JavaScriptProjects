@@ -1,0 +1,59 @@
+Variables = A container that stores a value. Behaves as if it were the value it contains.
+
+1. declaration       let = x;    once declared, you should not declare it again.
+2. assignment        x = 100;
+
+let x;
+x = 123;
+
+console.log(x);
+
+let age = 25;
+let price = 10.99;
+let gpa = 2.1;
+
+console.log(typeof gpa);
+console.log(`You are ${age} years old`);
+console.log(`The price is $${price}`);
+console.log(`Your gpa is: ${gpa}`);
+
+${} - known as template literals, allow you to embed expressions within string literals, making it easier to construct strings dynamically.
+
+String
+let firstName = "Christopher";
+let favoriteFood = "pizza";
+
+console.log(typeof firstName);
+console.log(`Your name is ${firstName}`);
+console.log(`You like ${favoriteFood}`);
+
+Boolean
+let online = false;
+let forSale = true;
+let isStudent = false;
+
+console.log(`Christopher's status: ${online}`);
+console.log(`Is this car for sale: ${forSale}`);
+console.log(`Enrolled: ${isStudent}`);
+
+let fullName = "Christopher Espago";
+let age = "25";
+let isStudent = "false";
+
+document.getElementById("p1").textContent = `Your name is ${fullName}`;
+document.getElementById("p2").textContent = `You are ${age} years old`;
+document.getElementById("p3").textContent = `Enrolled: ${isStudent}`;
+
+
+const = a variable that can't be change (constant)
+
+const pi = 3.14159;
+let radius;
+let circumference;
+
+radius = window.prompt(`Enter the radius of a circle`);
+radius = Number(radius);
+
+circumference = 2 * pi * radius;
+
+console.log(circumference);

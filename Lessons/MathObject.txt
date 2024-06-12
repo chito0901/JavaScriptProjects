@@ -1,0 +1,44 @@
+Math = built-in object that provides a 
+       collection of properties and methods.
+
+let x = 3.21;
+let y = 2;
+let z;
+
+z = Math.round(x);      // rounding off
+z = Math.floor(x);      // rounding down
+z = Math.ceil(x);       // rounding up
+z = Math.trunc(x);      // cut-off the decimal portion
+z = Math.pow(x, y);     // raise x to the power of y
+z = Math.sqrt(x);       // square root of x
+z = Math.log(x);        
+z = Math.sin(x);
+z = Math.cos(x);
+z = Math.tan(x);
+z = Math.abs(x);        // absolute value of x
+z = Math.sign(x);       // sign of a number
+
+
+let a = 3;
+let b = 2;
+let c = 1;
+
+let max = Math.max(x,y,z);
+let min = Math.min(x,y,z);
+
+Random number
+
+let randomNum = Math.random(); // to generate random number
+
+let randomDiceNum = Math.floor(Math.random() * 6) + 1;
+// Math.floor to round down number
+// (Math.random() * 6) + 1 -- to generate any number between 0 to 5 then add 1
+
+For a range of number
+
+const min = 50;     // sample value
+const max = 100;    // sample value
+
+let randomNum = Math.floor(Math.random() * (max - min)) + min;
+
+// (max - min) -- to only get the exact count for the range of number
