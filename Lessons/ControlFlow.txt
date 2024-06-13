@@ -101,3 +101,63 @@ switch(true){
         letterGrade = "F";
 }
 
+
+
+WHILE LOOP = repeat some code WHILE some conditio is true
+
+let username = "";
+
+while(username === "" || username === null){
+    console.log(`You didn't enter your name`);
+}
+console.log(`Hello ${username}`);
+
+let username;
+
+do{
+    username = window.prompt(`Enter your name`);
+}while(username === "" || username === null);
+
+let loggedIn = false;
+let username;
+let password;
+
+while(!loggedIn){
+    username = window.prompt(`Enter your username:`);
+    password = window.prompt(`Enter your password:`);
+
+    if(username === "myUsername" && password === "myPassword){
+        loggedIn = true;
+        console.log("You are logged in!");
+    } else {
+        console.log("Invalid credentials! Please try again.);
+    }
+}
+
+
+
+FOR LOOP = repeat some code a LIMITED amount of times
+
+for(let i = 0; i <=10; i+=2){
+    console.log(i);
+}
+
+i = 0   // initial or starting value
+i <= 10 // condition/will run until "10"
+i+=2    // increment or can be decrement
+
+to skip an iteration
+
+if(i == 13){
+    continue;
+} else {
+    console.log(i);
+}
+
+to break out of LOOP
+
+if(i == 13){
+    break;
+} else {
+    console.log(i);
+}
