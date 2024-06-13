@@ -1,0 +1,81 @@
+String Methods = allows you to manipulate and work with text (strings)
+
+let userName = "JSPractitioner";
+
+console.log(userName.charAt(0));        // will return the first letter
+console.log(userName.indexOf("S"));     // will return 1
+console.log(userName.lastIndexOf("i"))  // will return 9
+console.log(userName.length)            // will return the length of 
+                                           userName
+
+
+let userName = "JSPractitioner     ";
+userName = userName.trim();             // will remove whitespace
+userName = userName.toUpperCase();      // will capitalize all
+userName = userName.toLowerCase();      // will lowercase all
+userName = userName.repeat(x);          // will repeat the string x times
+
+let result = userName.startsWith(" ");  // will check if it start with an 
+                                           empty space
+let result = userName.endsWith(" ");    // will check if it ends with an
+                                           empty space
+let result = userName.includes(" ");    // will checi if it includes an
+                                           empty space 
+
+let phoneNumber = "123-456-7890";
+
+phoneNumber = phoneNumber.replaceAll("-", "/");
+            // will replace all - to /
+
+phoneNumber = phoneNumber.padStart(15, "0");
+            // will pad(add) "0" to the start until there is 15 characters
+
+phoneNumber = phoneNumber.padEnd(20, "0");
+            // will pad(add) "0" to the end until there is 20 characters
+
+
+
+String Slicing = creating a substring from a portion of another string
+                 string.slice(start, end)
+
+const fullName = "JS Practitioner";
+
+let firstName = fullName.slice(0, 2);       // will display JS
+let lastName = fullName.slice(3,14);        // will display Practitioner
+
+let firstChar = fullName.slice(0,1);        // will display J
+let lastChar = fullName.slice(-1);          // will display r
+
+const fullName = "JScript Practitioner";
+
+let firstName = fullName.slice(0, fullName.indexOf(" "));
+                // will display JScript
+let lastName = fullName.slice(fullName.indexOf(" ") + 1);
+                // will display Practitioner ( without + 1 it will have space at start)
+
+const email = "JSPractitioner@gmail.com";
+
+let username = email.slice(0, email.indexOf("@"));
+                    // will display JSPractitioner
+let extension = email.slice(email.indexOf("@") + 1);
+                    // will display gmail.com
+
+
+Method Chaining = calling one method after another 
+                  in one continuous line of code.
+
+---------------- NO METHOD CHAINING ----------------
+
+let username = window.prompt("Enter your username: ");
+
+username = username.trim();
+let letter = username.charAt(0);
+letter = letter.toUpperCase();
+
+let extraChars = username.slice(1);
+extraChars = extraChars.toLowerCase();
+username = letter + extraChars;
+
+---------------- WITH METHOD CHAINING ----------------
+
+username = username.trim().charAt(0).toUpperCase() + username.trim().slice(1).toLowerCase();
