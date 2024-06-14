@@ -12,7 +12,7 @@ increaseCount.onclick = function() {
     count++;
     countLabel.textContent = count;
 }
-resetCount .onclick = function(){
+resetCount.onclick = function(){
     count = 0;
     countLabel.textContent = count;
 }
