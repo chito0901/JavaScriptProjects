@@ -1,0 +1,43 @@
+FUNCTION = A section of resuable code.
+           Declare code once, use it whenever you want.
+           Call the function to execute that code.
+
+function happyBirthday(username, age){      // username and age are parameters
+    console.log("Happy birthday to you!");
+    console.log("Happy birthday to you!");
+    console.log("Happy birthday dear ${username}!");
+    console.log("Happy birthday to you!");
+    console.log("You are ${age} years old");
+}
+
+happyBirthday("Christopher", 25);       // Christopher and 25 are pass as arguments
+
+
+function add(x, y){
+    let result = x + y;
+    return result;
+}
+
+let answer = add(2, 3);
+console.log(answer);  // will return 5 
+
+function isEven(number){
+    result = number % 2;
+    if(result === 0) {
+        console.log(`${number} is Even`);
+    } else {
+        console.log(`${number} is Odd`);
+    }
+}
+
+isEven(13);
+
+function isValidEmail(email){
+    if(email.includes("@") && email.includes(".com")){
+        console.log(`The ${email} is valid.`)
+    } else {
+        console.log(`Invalid email! Try again`)
+    }
+}
+
+isValidEmail("validchecker@gmail.com");
