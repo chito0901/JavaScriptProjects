@@ -1,0 +1,85 @@
+Spread Operator = ... allows an iterable such as an array or 
+                  string to be expanded indto seperate element
+                  (unpacks the element)
+
+                = take each individual elements from an array
+                = take each individual characters of a string
+
+let numbers = [1, 2, 3, 4, 5];
+let maximum = Math.max(...numbers);
+let minimum = Math.min(...numbers);
+
+console.log(maximum);           // will display 5
+console.log(minimum);           // will display 1
+
+let username = "Christopher";
+let letters = [...username];
+
+console.log(letters);           // will display an array of each character
+
+let letters = [...username].join("-");
+
+console.log(letters);           // will display the username with dashes in between
+
+// can be used to combine arrays
+
+let fruits = ["apple", "orange", "banana"];
+let vegetables = ["carrots", "celery", "potatoes"];
+let foods = [...fruits, ...vegetables];
+
+console.log(foods);             // displays elements from fruits then vegetables
+
+
+
+Rest Parameters = (...rest) allow a function work with a variable number
+                  of arguments by bundling them into an array
+
+                  spread = expands an array into seperate elements
+                  rest = bundles seperate elements into an array
+
+function openFridge(...foods){
+        console.log(foods);
+}
+
+const food1 = "pizza";
+const food1 = "hamburger";
+const food1 = "hotdog";
+const food1 = "sushi";
+const food1 = "ramen";
+
+openFridge(food1, food2, food3, food4, food5);
+
+// console.log(foods); will display an array of food1 to food5
+// console.log(...foods); will display each food1 to food5 as a string
+
+function sum(...numbers){
+
+    let result = 0;
+    for(let number of numbers){
+        result += number;
+    }
+    return result;
+}
+
+const total = sum(1, 2, 3, 4, 5);
+console.log(total);             // displays 15
+
+function getAverage(...numbers){
+
+    let result = 0;
+    for(let number of numbers){
+        result += number;
+    }
+    return result / numbers.length;
+}
+
+const total = sum(75, 100, 85, 90, 50);
+console.log(total);             // displays 80
+
+// combining strings
+function combineStrings(...strings){
+    return strings.join(" ");
+}
+const fullName = combineStrings("Mr.", "Spongebob", "Squarepants", "III");
+
+console.log(fullName);      // displays Mr. Spongebob Squarepants III
