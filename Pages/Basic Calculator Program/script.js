@@ -8,12 +8,18 @@ const num7 = document.getElementById("num-7");
 const num8 = document.getElementById("num-8");
 const num9 = document.getElementById("num-9");
 const num0 = document.getElementById("num-0");
+const dcml = document.getElementById("dec-pnt");
 const add = document.getElementById("add");
 const sub = document.getElementById("sub");
 const mul = document.getElementById("mul");
 const div = document.getElementById("div");
 const eql = document.getElementById("eql");
 
+
+dcml.onclick = function() {
+    eqnDisplay.textContent += ".";
+    console.log(eqnDisplay);
+}
 num1.onclick = function() {
     eqnDisplay.textContent += 1;
     console.log(eqnDisplay, typeof eqnDisplay);

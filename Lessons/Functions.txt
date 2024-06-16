@@ -32,12 +32,21 @@ function isEven(number){
 
 isEven(13);
 
-function isValidEmail(email){
-    if(email.includes("@") && email.includes(".com")){
-        console.log(`The ${email} is valid.`)
-    } else {
-        console.log(`Invalid email! Try again`)
-    }
+function isEmailValid(email){
+    let emailChecker = email.includes("@") && email.includes(".com") ? true : false ;
+    console.log(emailChecker);
+
+    getResult = isDomainValid(email);
+
+    let result = emailChecker === true && isDomainValid === true ? `Email is valid` : `Please use a valid email`;
+    console.log(result);
+
 }
 
-isValidEmail("validchecker@gmail.com");
+function isDomainValid(email){
+    let domainChecker = email.includes("gmail") ? true : false ;
+    return domainChecker; 
+}
+
+isEmailValid("validitycheck@gmail.com")
+

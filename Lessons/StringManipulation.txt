@@ -19,7 +19,7 @@ let result = userName.startsWith(" ");  // will check if it start with an
                                            empty space
 let result = userName.endsWith(" ");    // will check if it ends with an
                                            empty space
-let result = userName.includes(" ");    // will checi if it includes an
+let result = userName.includes(" ");    // will check if it includes an
                                            empty space 
 
 let phoneNumber = "123-456-7890";

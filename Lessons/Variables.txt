@@ -61,13 +61,15 @@ console.log(circumference);
 
 
 Variable Scope = where a variable is recognized and accessible
-                 (local vs global)
+                 local - when a variable is set inside curly braces
+                 global - when a variable is set outside of functions
 
 function function1(){
-    let x= 1;
+    let x = 1;
     console.log(x);
 }
+
 function function2(){
-    let x= 2;
+    let x = 2;
     console.log(x);
 }
