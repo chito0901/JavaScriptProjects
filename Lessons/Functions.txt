@@ -34,13 +34,14 @@ isEven(13);
 
 function isEmailValid(email){
     let emailChecker = email.includes("@") && email.includes(".com") ? true : false ;
+
     console.log(emailChecker);
 
     getResult = isDomainValid(email);
+    console.log(getResult);
 
-    let result = emailChecker === true && isDomainValid === true ? `Email is valid` : `Please use a valid email`;
+    let result = emailChecker === true && getResult === true ? `Email is valid` : `Please use a gmail account`;
     console.log(result);
-
 }
 
 function isDomainValid(email){
@@ -48,5 +49,4 @@ function isDomainValid(email){
     return domainChecker; 
 }
 
-isEmailValid("validitycheck@gmail.com")
-
+isEmailValid("validitycheck@gmail.com");

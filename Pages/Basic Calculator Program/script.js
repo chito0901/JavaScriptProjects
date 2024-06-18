@@ -14,7 +14,7 @@ const sub = document.getElementById("sub");
 const mul = document.getElementById("mul");
 const div = document.getElementById("div");
 const eql = document.getElementById("eql");
-
+let result;
 
 dcml.onclick = function() {
     eqnDisplay.textContent += ".";
