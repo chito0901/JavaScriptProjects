@@ -1,0 +1,94 @@
+OBJECT = a collection of related properties and/or methods
+         Can represent real world objects (people, products, places)
+         object = {key:value,
+                   function()};
+
+const person1 = {
+    firstName: "Spongebob",
+    lastName: "Squarepants",
+    age: 30,
+    isEmployed: true,
+    sayHello: function(){console.log("Hi! Im Spongebob!")},
+    sayBye: function(){console.log("Goodbye!")}
+};
+const person2 = {
+    firstName: "Patrick",
+    lastName: "Star",
+    age: 42,
+    isEmployed: false,
+    sayHello: () => console.log("Hi! Im Patrick..."),     // using arrow function
+    sayBye: () => console.log("Bye...")                 // using arrow function
+};
+
+--------------------------------------------------------------------------
+
+NESTED OBJECT = Objects inside of other Objects.
+                Allows you to represent more complex data structures
+                Child Object is enclosed by a Parent Object
+
+                Person{Address{}, ContactInfo{}}
+                ShoppingCart{KeyBoard{}, Mouse{}, Monitor{}}
+
+const person1 = {
+    fullName: "Spongebob Squarepants",
+    age: 30,
+    isEmployed: true,
+    hobbies: ["Karate", "Jellyfishing", "Cooking"],
+    address: {
+        street: "124 Conch st.",
+        city: "Bikini Bottom",
+        country: "Int. Water"
+    }
+};
+
+console.log(person.fullName);
+console.log(person.age);
+console.log(person.isEmployed);
+console.log(person.hobbies[0]);
+
+-- console.log(person.hobbies) will display an array with 'key: value'
+-- console.log(person.hobbies[0]) will display Karate
+-- to access a property within an object, use dot notation
+
+console.log(person.address.street);
+console.log(person.address.city);
+console.log(person.address.country);
+
+-- to loop through the properties of a nested object, we can use for loop
+
+for(const property in person.address){
+    console.log(person.address[property]);
+}
+
+---------- Classes that utilizes Nested Objects ----------
+
+class Person{
+
+    constructor(name, age, ...address){
+        this.name = name;
+        this.age = age;
+        this.address = new Address (...address);
+    }
+}
+
+class Address{
+
+    constructor(street, city, country){
+        this.street = street;
+        this.city = city;
+        this.country = country;
+    }
+}
+
+const person1 = new Person("Spongebob", 30,
+                "124 Conch st.", "Bikini Bottom", "Int. Waters");
+
+const person2 = new Person("Patirck", 34,
+                "126 Conch st.", "Bikini Bottom", "Int. Waters");
+
+const person3 = new Person("Squidward", 45,
+                "125 Conch st.", "Bikini Bottom", "Int. Waters");
+
+console.log(person1.address);
+console.log(person2.address);
+console.log(person2.address);     

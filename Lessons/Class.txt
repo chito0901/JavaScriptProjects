@@ -1,0 +1,283 @@
+CLASS  = (ES6 feature) provides a more structured and cleaner way
+         to work with objects ccompared to traditional constructor functions.
+         ex. static keyword, encapsulation, inheritance
+
+function product(name, price) {
+
+    this.name = name;
+    this.price = price;
+
+    this.displayProduct = function(){
+        console.log(`Product: ${this.name}`);
+        console.log(`Price: $${this.price.toFixed(2)}`);
+    };
+
+    this.calculateTotal = function(salesTax){
+        return this.price + (this.price * salesTax);
+    };
+}
+
+const salesTax = 0.05;
+
+const product1 = new product("Shirt", 19.99);
+const product2 = new product("Pants", 22.25);
+const product3 = new product("Underwear", 100.00);
+
+product1.displayProduct();
+product2.displayProduct();
+product3.displayProduct();
+
+-- to apply class to the above code
+
+class Product{
+    constructor(name, price){
+        this.name;
+        this.price;
+    }
+
+    displayProduct(){
+        console.log(`Product: ${this.name}`);
+        console.log(`Price: $${this.price.toFixed(2)}`);
+    }
+
+    calculateTotal(salesTax){
+        return this.price + (this.price * salesTax);
+    };
+}
+
+const salesTax = 0.05;
+
+const product1 = new product("Shirt", 19.99);
+const product2 = new product("Pants", 22.25);
+const product3 = new product("Underwear", 100.00);
+
+product1.displayProduct();
+product2.displayProduct();
+product3.displayProduct();
+
+const total = product1.calculateTotal(salesTax);
+console.log(`Total price (with tax): $${total.toFixed(2)}`);
+
+--------------------------------------------------------------------------
+
+STATIC = keyword that defines properties or methods that belong to
+         a class itself rather than the objects created
+         from that class (class owns anything static, not the objects)
+
+class mathUtil{
+    static PI = 3.14159;
+
+    static getDiameter(radius){
+        return radius * 2;
+    }
+    static getCircumference(radius){
+        return 2 * this.PI * radius;
+    }
+    static getArea(radius){
+        return this.PI * radius * radius;
+    }
+}
+
+console.log(mathUtil.PI);                       // will display 3.14159
+console.log(mathUtil.getDiameter(10));          // will display 20
+console.log(mathUtil.getCircumference(10));     // will display 62.8318
+console.log(mathUtil.getArea(10));              // will display 314.159
+
+
+class user{
+
+    static userCount = 0;
+
+    constructor(username){
+        this.username = username;
+        user.userCount++;
+    }
+
+    static getUserCount(){
+        console.log(`There are ${user.userCount} users online`);
+    }
+    sayHello(){
+        console.log(`Hello, my username is ${this.username});
+    }
+}
+
+const user1 = new user("Spongebob");
+
+console.log(user1.username);        // will display Spongebob
+console.log(user1.userCount);       // undefined
+
+-- it returns undefined because user1 doesnt have userCount as a property
+   it's static, it belongs to the class user
+
+console.log(user.userCount);        // will display 1
+
+const user1 = new user("Spongebob");
+const user2 = new user("Patrick");
+const user3 = new user("Sandy");
+
+console.log(user.userCount);        // will display 3
+
+user1.sayHello();                   // Hello, my username is Spongebob
+user2.sayHello();                   // Hello, my username is Patrick
+user3.sayHello();                   // Hello, my username is Sandy
+User.getUserCount();                // There are 3 users online
+
+--------------------------------------------------------------------------
+
+INHERITANCE = allows a new class to inherit properties and methods
+              from an existing class (parent -> child)
+              helps with code reusability
+
+class Animal{
+    alive = true;
+
+    eat(){
+        console.log(`The ${this.name} is eating.`);
+    }
+    sleep(){
+        console.log(`The ${this.name} is sleeping.`);
+    }
+}
+
+-- the code above is the 'parent class'
+
+class Rabbit extends Animal{
+    name = "rabbit";
+
+    hop(){
+        console.log(`The ${this.name} can hop.`);
+    }
+}
+class Fish extends Animal{
+    name = "fish";
+
+    swim(){
+        console.log(`The ${this.name} can swim.`);
+    }
+}
+class Hawk extends Animal{
+    name = "hawk";
+
+    fly(){
+        console.log(`The ${this.name} can fly.`);
+    }
+}
+
+-- those three are the 'children classes'
+
+const rabbit = new Rabbit();
+const fish = new Fish();
+const hawk = new Hawk();
+
+console.log(rabbit.alive);          // true
+fish.eat();                         // The fish is eating.
+hawk.sleep();                       // The hawk is sleeping.
+
+-- all children classes inherited the properties and methods of the parent class
+-- each children classes can have their own unique properties and methods.
+   rabbit -> hop() // fish -> swim() // hawk -> fly()
+-- trying to access the function of a different child will result to errors.
+
+--------------------------------------------------------------------------
+
+SUPER = keyword is used in classes to call the constructor or 
+        access the properties and methods of a parent (superclass)
+        this = this object
+        super = the parent
+
+// parent class
+class Animal{
+
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
+    }
+}
+
+// children classes
+class Rabbit extends Animal{
+
+    constructor(name, age, hopSpeed){
+        super(name, age);
+        this.hopSpeed = hopSpeed;
+    }
+}
+class Fish extends Animal{
+
+    constructor(name, age, swimSpeed){
+        super(name, age);
+        this.swimSpeed = swimSpeed;
+    }
+}
+class Hawk extends Animal{
+
+    constructor(name, age, flySpeed){
+        super(name, age);
+        this.flySpeed = flySpeed;
+    }
+}
+
+const rabbit = new Rabbit("Rabbit", 1, 25);
+const fish = new Fish("Fish", 2, 12);
+const hawk = new Hawk("Hawk", 3, 50);
+
+-- while passing the properties name and age to the parent class it can be accesed by the children classes by using super(name, age).
+
+-- the name and age should be passed as arguments to the children constructor.
+
+-- in this example if we construct an object we'll accept three arguments
+   the arguments from the parent(name and age) and the unique argument for each children classes
+
+
+-- adding a function in the parent class and accessing it by the children
+
+// parent class
+class Animal{
+
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
+
+        move(speed){
+            console.log(`The ${this.name} moves at a speed of ${speed}km`);
+        }
+    }
+}
+
+// children classes
+class Rabbit extends Animal{
+
+    constructor(name, age, runSpeed){
+        super(name, age);
+        this.runSpeed = runSpeed;
+
+        hop(){
+            console.log(`The ${this.name} can hop.`);
+            super.move(this.hopSpeed);
+        }
+    }
+}
+class Fish extends Animal{
+
+    constructor(name, age, swimSpeed){
+        super(name, age);
+        this.swimSpeed = swimSpeed;
+
+        swim(){
+            console.log(`The ${this.name} can swim.`);
+            super.move(this.swimSpeed);
+        }
+    }
+}
+class Hawk extends Animal{
+
+    constructor(name, age, flySpeed){
+        super(name, age);
+        this.flySpeed = flySpeed;
+
+        fly(){
+            console.log(`The ${this.name} can fly.`);
+            super.move(this.flySpeed);
+        }
+    }
+}

@@ -50,3 +50,86 @@ function isDomainValid(email){
 }
 
 isEmailValid("validitycheck@gmail.com");
+
+--------------------------------------------------------------------------
+
+FUNCTION DECLARATION  = define a reusable block of code 
+                        that performs a specific task
+
+function hello(){
+    console.log("Hello!");
+}
+
+
+
+FUNCTION EXPRESSIONS = a way to define functions as values or variables
+
+1. Callbacks in asynchronous operations
+2. Higher-Order functions
+3. Closures
+4. Event Listeners 
+
+
+const hello = function(){
+    console.log("Hello!");
+}
+
+setTimeout(callback, value-in-millisec);
+
+setTimeout(function(){
+    console.log("Hello!");
+}, 3000);
+
+// numbers
+const numbers = [1, 2, 3, 4, 5, 6];
+
+const squares = numbers.map(function(element){
+    retur Math.pow(element, 2);
+});
+
+console.log(squares);
+
+const cubes = numbers.map(function(element){
+    retur Math.pow(element, 3);
+});
+
+console.log(cubes);
+
+const evenNums = number.filter(function(element){
+    return element % 2 === 0;
+});
+
+console.log(evenNums);
+
+const oddNums = number.filter(function(element){
+    return element % 2 !== 0;
+});
+
+console.log(oddNums);
+
+
+
+ARROW FUNCTIONS = a concise way to write function expressions
+                  good for a simple functions that you use only once
+                  (parameters) => some code
+
+const hello = (name, age) => {console.log(`Hello ${name}`)
+                              console.log(`You are ${age} years old`)};
+
+hello("Bro", 25);
+
+setTimeout( () => console.log("Hello"), 3000);
+
+const numbers = [1, 2, 3, 4, 5, 6];
+
+const squares = numbers.map((element) => Math.pow(element, 2));
+const cubes = numbers.map((element) => Math.pow(element, 3));
+const evenNums = numbers.filter((element) => element % 2 === 0);
+const oddNums = numbers.filter((element) => element % 2 !== 0);
+const total = number.reduce((accumulator, element) => accumulator + element);
+
+console.log(squares);
+console.log(cubes);
+console.log(evenNums);
+console.log(oddNums);
+console.log(total);

@@ -58,7 +58,7 @@ circumference = 2 * pi * radius;
 
 console.log(circumference);
 
-
+--------------------------------------------------------------------------
 
 Variable Scope = where a variable is recognized and accessible
                  local - when a variable is set inside curly braces
