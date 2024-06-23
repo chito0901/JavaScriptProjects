@@ -1,0 +1,93 @@
+Promise = An Object that manages asynchronous operations.
+          Wrap a Promise Object around {asynchronous code}
+          "I promise to return a value"
+          PENDING -> RESOLVED or REJECTED
+          new Promise((resolve, reject) => {asynchronous code});
+
+Do the chores in Order
+
+1. Walk the dog.
+2. Clean the kitchen
+3. Take out the trash
+
+function walkDog(callback){
+    setTimeout(() => {
+        console.log("You walked the dog!");
+        callback();
+    }, 3000);
+}
+function cleanKitchen(callback){
+    setTimeout(() => {
+        console.log("You cleaned the kitchen!");
+        callback();
+    }, 5000);
+}
+function trashOut(callback){
+    setTimeout(() => {
+        console.log("You took the trash out!");
+        callback();
+    }, 1000);
+}
+
+walkDog(() => {
+    cleanKitchen(() => {
+        trashOut(() => console.log("You finished the tasks!));
+    });
+});
+
+-- if there are more tasks, it will result to callbacck hell.
+-- using promises, we dont need callbacks. the method chaining
+
+
+function walkDog(){
+
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+
+            const dogwalked = true;
+
+            if(dogwalked){
+                resolve("You walked the dog!");
+            } else {
+                reject("You DIDN'T walk the dog!);
+            }
+        }, 3000);
+    });
+}
+function cleanKitchen(){
+
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+
+            const cleankitchen = true;
+
+            if(cleankitchen){
+                resolve("You cleaned the kitchen!");
+            } else {
+                reject("You DIDN'T clean the kitchen!);
+            }
+            
+        }, 5000);
+    });
+
+}
+function trashOut(){
+
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+
+            const tooktrash = true;
+
+            if(tooktrash){
+                resolve("You took the trash out!");
+            } else {
+                reject("You DIDN'T take out the trash!);
+            }
+        }, 1000);
+    });
+
+}
+
+walkDog().then(value => {console.log(value); return cleanKitchen()})
+         .then(value => {console.log(value); return trashOut()})
+         .then(value => {console.log(value); console.log("You finished all the chores!)}).catch(error => cosole.error(error));

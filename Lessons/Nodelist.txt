@@ -1,0 +1,71 @@
+NodeList = Static collection of HTML elements by (id, class, element)
+           Can be created by using querySelectorAll()
+           Similar to an array, but no map(), filter(), or reduce() only forEach()
+           NodeList won't update to automatically reflect changes
+
+-- html code
+
+    <button class="myButtons">Button1</button>
+    <button class="myButtons">Button2</button>
+    <button class="myButtons">Button3</button>
+    <button class="myButtons">Button4</button>
+
+-- css style
+    .myButtons {
+        font-size: 4rem;
+        margin: 10px;
+        border: none;
+        padding: 10px 15px;
+        background-color: hsl(205, 100%, 60%);
+        color: white;
+    }
+
+-- js code
+
+    let buttons = document.querySelectorAll(".myButtons");
+
+-------------------- Add, change and remove HTML/CSS Properties --------------------
+
+    const newButton = document.createElement("button");
+    newButton.textContent = "Button5";
+    newButton.classList = "myButtons";
+    document.body.appendChild(newButton);
+    -- after appending the new button, it won't automatically be added to the nodelist
+
+    buttons = document.querySelectorAll(".myButtons");
+    -- using querySelectorAll() again will update the nodelist
+
+    buttons.forEach(button => {
+        button.style.backgroundColor = "green";
+        button.textContent += "👌";
+    });
+    -- using forEach(), we can access each individual button in the nodelist
+
+    buttons.forEach(button => {
+        button.addEventListener("click", event => {
+            event.target.remove();
+            buttons = document.querySelectorAll(".myButtons");
+        });
+    });
+    -- the above code should remove the button from the nodelist. 
+
+-------------------- Event listener --------------------
+
+    buttons.forEach(button => {
+        button.addEventListener("click", event => {
+            event.target.style.backgroundColor = "tomato";
+        });
+    });
+    -- click event
+
+    buttons.forEach(button => {
+        button.addEventListener("mouseover", event => {
+            event.target.style.backgroundColor = "hsl(205, 100%, 40%)";
+        });
+    });
+    buttons.forEach(button => {
+        button.addEventListener("mouseout", event => {
+            event.target.style.backgroundColor = "hsl(205, 100%, 60%)";
+        });
+    });
+    -- mouseover and mouseout event

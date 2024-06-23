@@ -1,0 +1,80 @@
+------------------- EXAMPLE 1 <h1> -------------------
+
+-- html code
+    <div id="box1" class="box">
+        <p>Box1</p>
+    </div>
+    <div id="box2" class="box">
+        <p>Box2</p>
+    </div>
+    <div id="box3" class="box">
+        <p>Box3</p>
+    </div>
+    <div id="box4" class="box">
+        <p>Box4</p>
+    </div>
+
+Step 1: Create the element
+
+    const newH1 = document.createElement("h1");
+
+Step 2: Add Attributes/Properties
+
+    newh1.textContent = "I like pizza!";
+    newH1.id = "myH1';
+    newH1.style.color = "tomato";
+    newH1.style.textAlign = "center";
+
+Step 3: Append element to DOM
+
+    document.body.append(newH1);
+    -- when you append an element to a parent, this element becoms the last child
+
+    document.body.prepend(newH1);    
+    -- prepend sets the element to be the first child
+
+    document.getElementById("box1").append(newH1);    
+    -- newH1 will be the last child of box1, set to prepend if you want it to be the first child
+
+    const box2 = document.getElementById("box2");
+    document.body.insertBefore(newH1, box2)
+
+    document.body.insertBefore(newElement, currentElement);
+    -- to insert a new element before an element, we used the code above.
+
+    const boxes = document.querySelectorAll(".box");
+    document.body.inserBefore(newH1, boxes[4]);
+    -- if there is no ID, use querySelector() to select many elements, store it on a nodelist (boxes) and then selec those specific elements with an index number 
+
+Remove HTML Element
+
+    document.body.removeChild(newH1);
+    -- remove newH1 from its parent (body)
+
+    document.getElementById("box1").removeChild(newH1);
+    -- remove newH1 from its parent box1
+
+------------------- EXAMPLE 2 <li> -------------------
+
+-- html code
+    <body>
+        <ol id="fruits">
+            <li id="apple">Apple</li>
+            <li id="orange">Orange</li>
+            <li id="banana">Banana</li>
+        </ol>
+    </body>
+
+-- js code
+    Step 1:
+        const newListItem = document.createElement("li");
+
+    Step 2:
+        newListItem.textContent = "Coconut";
+        newListItem.id = "coconut";
+
+    Step 3:
+        document.getElementById("fruits").prepend(newListItem);
+
+
+-------------------------------------------------------------------------------------
