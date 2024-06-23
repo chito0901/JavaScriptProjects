@@ -1,0 +1,124 @@
+JSON = (JavaScript Object Notation) data-interchange format
+       Used for exchanging data between a server and a web application
+       JSON files {key:value} OR [value1, value2, value3]
+
+       JSON.stringify() = converts a JS object to a JSON string.
+       JSON.parse() = converts a JSON string to a JS object.
+
+--------------------------------- JSON.stringify() ---------------------------------
+
+-- names.json (array)
+    ["Spongebob", "Patrick", "Squidward", "Sandy"]
+
+-- person.json (object)
+    {
+        "name": "Spongebob",
+        "age": 30,
+        "isEmployed": true,
+        "hobbies": ["Jellyfising", "Karate", "Cooking"]
+    }
+
+-- people.json (array of object)
+    [{
+        "name": "Spongebob",
+        "age": 30,
+        "isEmployed": true
+    },
+    {
+        "name": "Spongebob",
+        "age": 34,
+        "isEmployed": false
+    },
+    {
+        "name": "Squidward",
+        "age": 50,
+        "isEmployed": true
+    },
+    {
+        "name": "Sandy",
+        "age": 27,
+        "isEmployed": false
+    }]
+
+-- on index.js
+
+    const names = ["Spongebob", "Patrick", "Squidward", "Sandy"]
+    console.log(names);
+
+    -- logged an array of strings with key:value
+
+    const jsonString = JSON.stringify(names);
+    console.log(jsonString);
+
+    -- logged a one long string
+     
+    const person = {
+        "name": "Spongebob",
+        "age": 30,
+        "isEmployed": true,
+        "hobbies": ["Jellyfising", "Karate", "Cooking"]
+    }
+    console.log(person);
+
+    -- logged an array of strings with key:value
+
+    const jsonString = JSON.stringify(person);
+    console.log(jsonString);
+
+    -- logged one long string
+
+    const people = [{
+        "name": "Spongebob",
+        "age": 30,
+        "isEmployed": true
+    },
+    {
+        "name": "Spongebob",
+        "age": 34,
+        "isEmployed": false
+    },
+    {
+        "name": "Squidward",
+        "age": 50,
+        "isEmployed": true
+    },
+    {
+        "name": "Sandy",
+        "age": 27,
+        "isEmployed": false
+    }]
+    console.log(people);
+
+    -- logged an array of strings with key:value
+
+    const jsonString = JSON.stringify(people);
+    console.log(jsonString);
+
+    -- logged one extremly long string
+
+
+--------------------------------- JSON.parse() ---------------------------------
+
+const jsonNames = `["Spongebob", "Patrick", "Squidward", "Sandy"]`;
+const jsonPerson = `{"name": "Spongebob", "age": 30, "isEmployed": true, "hobbies": ["Jellyfising", "Karate", "Cooking"]}`;
+const jsonPeople = `[{"name": "Spongebob", "age": 30, "isEmployed": true},
+                    {"name": "Spongebob", "age": 34, "isEmployed": false},
+                    {"name": "Squidward", "age": 50, "isEmployed": true},
+                    {"name": "Sandy", "age": 27, "isEmployed": false}]`;
+
+-- enclosing the arrays and objects with backticks to change them to strings
+
+const parsedData = JSON.parse(jsonNames);
+console.log(parseData);
+
+-- logged a JavaScript array
+
+const parsedData = JSON.parse(jsonPerson);
+console.log(parseData);
+
+-- logged a JavaScript of object
+
+const parsedData = JSON.parse(jsonPeople);
+console.log(parseData);
+
+-- logged a JavaScript of array of object
