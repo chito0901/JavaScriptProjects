@@ -1,0 +1,42 @@
+synchronous = Executes by line consecutively in a sequential manner
+              Code that waits for an operation to complete.
+
+console.log("Task 1");
+console.log("Task 2");
+console.log("Task 3");
+
+-- all the above code is synchronous. Task 2 won't initiate unless Task 1 is finished.
+
+asynchronous = Allows multiple operations to be performed concurrently without waiting
+               Doesn't block the execution flow and allows the program to continue
+               (I/O operations, network request, fetching data)
+               Handled with: Callbacks, Promises, Async/Await
+
+setTimeout(() => console.log("Task 1"), 3000);
+
+console.log("Task 2");
+console.log("Task 3");
+console.log("Task 4");
+
+-- setTimeout() is one of the many asynchronous functions.
+-- Task 2, Task 3, and Task 4 will initiate synchronously while Task 1 wont wait for the 3 task to finished up before intiating. It will start after 3 sec.
+
+function func1(callback){
+    setTimeout(() => {console.log("Task 1"); callback()}, 3000);
+}
+
+-- func1's argument's name will be 'callback'
+-- after Task 1, invoke callback
+
+function func2(){
+    console.log("Task 2");
+    console.log("Task 3");
+    console.log("Task 4");
+    console.log("Task 5");
+    console.log("Task 6");
+    console.log("Task 7");
+}
+
+func1(func2);
+
+-- the above code will result to Task 1 - 7 being logged after 3 sec

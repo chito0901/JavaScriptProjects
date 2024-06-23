@@ -1,0 +1,59 @@
+sort() = method used to sort elements of an array in place.
+         Sorts elements as a string in lexicographic order, not alphabetical
+         lexicographic = (alphabetical + numbers + symbols) as strings
+
+let fruits = ["apple", "orange", "banana", "coconut", "pineapple"];
+fruits.sort();
+
+console.log(fruits);
+-- displays ["apple", "banana", "coconut", "orange", "pineapple"]
+
+let numbers = [1, 9, 10, 3, 7, 4, 6, 2, 8, 5];
+numbers.sort();
+
+console.log(numbers);
+-- displays [1, 10, 2, 3, 4, 5, 6, 7, 8, 9] since it arranges lexicographic
+-- to sort numbers, we need to write a custom comparison function
+
+numbers.sort((a, b) => a - b)
+-- to sort from lowest to highest
+
+numbers.sort((a, b) => b - a)
+-- to sort from highest to lowest
+
+---------- Sorting while accessing properties ----------
+
+const people = [{name: "Spongebob", age: 30, gpa: 3.0}, 
+                {name: "Patrick", age: 37, gpa: 1.5}, 
+                {name: "Squidward", age: 51, gpa: 2.5}, 
+                {name: "Sandy", age: 27, gpa: 4.0}];
+
+people.sort((a, b) => a.age - b.age);
+console.log(people);
+
+people.sort((a, b) => a.name - b.name);
+console.log(people);
+-- displays the array as is.
+-- to sort strings, use localeCompare
+
+people.sort((a, b) => a.name.localeCompare(b.name));
+console.log(people);
+-- displays the arrangement Patrick, Sandy, Spongebob, Squidward
+
+--------------------------------------------------------------------------
+
+Shuffling an array using Fisher-Yates algorithm
+
+const cards = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
+
+shuffle(cards);
+
+function shuffle(array){
+    for(let i = array.length - 1; i > 0; i-- ){
+        const random = Math.floor(Math.random() * ( i + 1));
+
+        [array[i], array[random]] = [array[random], array[i]];
+    }
+}
+
+console.log(cards)

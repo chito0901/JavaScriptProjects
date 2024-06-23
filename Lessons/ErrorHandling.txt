@@ -1,0 +1,72 @@
+Error = An Object that is created to represent a problem that occurs
+        Occur often with user input or establishing a connection
+
+try { } = Encloses code that might potentially cause an error.
+catch { } = Catch and handle any thrown Errors from try { }.
+finally { } = (optional) Always executes. Used mostly for clean up.
+              ex. close files, close connections, release resources
+
+console.log(x);
+-- Uncaught ReferenceError: x is not defined
+
+console.log("You have reached the end!");
+
+-- since there is an error, the program wont execute the succeeding code from the line of error.
+-- using try and catch
+
+try{
+    console.log(x);
+    // Network Errors
+    // Promise Rejection
+    // Security Errors
+}
+
+catch(error){
+    console.error(error);
+}
+
+finally{
+    console.log("This always executes");
+    // Close Files
+    // Close Connections
+    // Release Resources
+}
+
+console.log("You have reachedd the end!");
+
+-- ReferenceError: x is not defined
+-- You have reaced the end!
+
+---------- User input error ----------
+
+const dividend = window.prompt("Enter a dividend: ");
+const divisor = window.prompt("Enter a dividend: ");
+
+const result = dividend / divisor;
+console.log(result);
+
+-- an input of zero in the divisor will result to Infinity
+-- using try { }
+
+try {
+    const dividend = Number(window.prompt("Enter a dividend: "));
+    const divisor = Number(window.prompt("Enter a dividend: "));
+
+    if(divisor == 0){
+        throw new Error("You can't divide by zero!");
+    }
+    if(isNaN(dividend) || isNaN(dividend)){
+        throw new Error("Values must be a number")
+    }
+
+    const result = dividend / divisor;
+    console.log(result);
+}
+catch(error){
+    console.error(error);
+}
+
+console.log("You have reached the end!");
+
+-- to make the input only accept numeric number, window.prompt is enclose to Number
+-- adding an if statement to check if the divisor is equal to zero to have a Error when an input is equal to zero.

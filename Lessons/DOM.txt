@@ -1,0 +1,354 @@
+DOM = DOCUMENT OBJECT MODEL
+      Object{} that represents the page you see in the web browser
+      and provides you with an API to interact with it.
+      Web browser construcs the DOM when it loads an HTML document, and
+      structures all the elements in a tree-like representation.
+      JavaScript can access the DOM to dynamically change the content, structure, 
+      and style of a web page.
+
+document
+|- Root document <html>
+|-- Element: <head>
+|--- Element: <title>
+|---- Text: "My Title"
+|-- Element: <body>
+|--- Element: <h1>
+|---- Text: "A heading"
+|--- Element: <a>
+|---- Text: "Link text"
+|--- Attribute: href
+
+-- one way to access the element by id, we use 'document.getElementById("");' method
+
+console.log(document);
+-- will log the html structure
+
+console.dir(document);
+-- dir = directory will list all of the properties of the document object
+
+-- some ways to access anything in the document
+document.title = "My website";
+document.body.style.backgroundColor = "hsl(0, 0%, 10%)";
+
+---------- Manipulating Strings ----------
+
+-- html side
+
+<body>
+    <h1 id="welcome-msg">Welcome</h1>
+    <script src="index.js"></script>
+</body>
+
+-- js side
+
+const username = "Bro Code";
+const welcomeMsg = document.getElementById("welcome-msg");
+
+welcomeMsg.textContent += username === "" ? `Guest` : username;
+
+-- since we have a value for username, the web will display 'Welcome Bro Code'
+
+-------------------------------------------------------------------------------------
+
+ELEMENT SELECTOR = Methods used to target and manipulate HTML elements
+                   They allow you to select one or multiple HTML elements
+                   from the DOM (Document Object Model)
+
+1. document.getElementById()                // returns Element or Null
+
+    -- html side
+
+        <body>
+            <h1 id="my-heading">Food R Us</h1>
+            <script src="index.js"></script>
+        </body>
+
+    -- js side
+
+        const myHeading = document.getElementById("my-heading");
+        myHeading.style.backgroundColor = "yellow";
+        myHeading.style.textAlign = "center";
+
+2. document,getElementsByClassName()        // returns HTML Collection
+
+    -- html side
+
+        <body>
+            <h1 id="my-heading">Food R Us</h1>
+
+            <div class="fruits">Apple</div>
+            <div class="fruits">Banana</div>
+            <div class="fruits">Orange</div>
+
+            <script src="index.js"></script>
+        </body>
+
+    -- js side
+
+        const fruits = document.getElementsByClassName("fruits");
+        
+        fruits[0].style.backgroundColor = "yellow";
+        // highlight the 0 index of the fruits
+
+        for(let fruit of fruits){
+            fruit.style.backgroundColor = "yellow";
+        }
+        // highlights all of the fruit
+
+        Array.from(fruits).forEach(fruit => {
+            fruit.style.backgroundColor = "yellow";
+        });
+        // HTML collection doesn't have a forEach method, we can use type cast the html collection as an array
+
+3. document,getElementsByTagName()          // returns HTML Collection
+
+    -- html side
+
+            <body>
+                <h1 id="my-heading">Food R Us</h1>
+
+                <div class="fruits">Apple</div>
+                <div class="fruits">Banana</div>
+                <div class="fruits">Orange</div>
+
+                <h4>Root Vegetables</h4>
+                <ul>
+                    <li>Beets</li>
+                    <li>Carrots</li>
+                    <li>Potatoes</li>
+                </ul>
+
+                <h4>Non-Root Vegetables</h4>
+                <ul>
+                    <li>Broccoli</li>
+                    <li>Celery</li>
+                    <li>Onion</li>
+                </ul>
+
+                <script src="index.js"></script>
+            </body>
+
+        -- js side
+
+            const h4Elements = document.getElementsByTagName("h4");
+            const liElements = document.getElementsByTagName("li");
+
+            h4Elements[0].style.backgroundColor = "yellow";
+
+            for(let h4Element of h4Elements){
+                h4Element.style.backgroundColor = "yellow";
+            }
+            for(let liElement of liElements){
+                liElement.style.backgroundColor = "lightgreen";
+            }
+
+            Array.from(h4Elements).forEach(h4Element => {
+                h4Element.style.backgroundColor = "yellow";
+            });
+            Array.from(liElements).forEach(liElement => {
+                liElement.style.backgroundColor = "lightgreen";
+            });
+
+4. document.querySelector()                 // returns Element or 
+
+    -- html side
+
+            <body>
+                <h1 id="my-heading">Food R Us</h1>
+
+                <div class="fruits">Apple</div>
+                <div class="fruits">Banana</div>
+                <div class="fruits">Orange</div>
+
+                <h4>Root Vegetables</h4>
+                <ul>
+                    <li>Beets</li>
+                    <li>Carrots</li>
+                    <li>Potatoes</li>
+                </ul>
+
+                <h4>Non-Root Vegetables</h4>
+                <ul>
+                    <li>Broccoli</li>
+                    <li>Celery</li>
+                    <li>Onion</li>
+                </ul>
+
+                <script src="index.js"></script>
+            </body>
+
+        -- js side
+
+            const element = document.querySelector(".fruits");
+            // query selector only returns 1 element. the first match
+
+            element.style.backgroundColor = "yellow";
+
+
+5. document.querySelectorAll()              // returns Nodelist
+
+    -- html side
+
+            <body>
+                <h1 id="my-heading">Food R Us</h1>
+
+                <div class="fruits">Apple</div>
+                <div class="fruits">Banana</div>
+                <div class="fruits">Orange</div>
+
+                <h4>Root Vegetables</h4>
+                <ul>
+                    <li>Beets</li>
+                    <li>Carrots</li>
+                    <li>Potatoes</li>
+                </ul>
+
+                <h4>Non-Root Vegetables</h4>
+                <ul>
+                    <li>Broccoli</li>
+                    <li>Celery</li>
+                    <li>Onion</li>
+                </ul>
+
+                <script src="index.js"></script>
+            </body>
+
+        -- js side
+
+            const fruits = document.querySelectorAll(".fruits");
+
+            fruits[0].style.backgroundColor = "yellow";
+
+            const foods = document.querySelectorAll("li");
+
+            foods.forEach(food =>{
+                food.style.backgroundColor = "yellow";
+            });
+
+-------------------------------------------------------------------------------------
+
+DOM Navigation = The process of navigating through the structure of an HTMLL document
+                 using JavaScript.
+        
+------------ .firstElementChild ------------
+
+    -- html side
+
+                <body>
+
+                    <ul id="fruits">
+                        <li>apple</li>
+                        <li>orange</li>
+                        <li>banana</li>
+                    </ul>
+
+                    <ul id="vegetables">
+                        <li>carrots</li>
+                        <li>potato</li>
+                        <li>onion</li>
+                    </ul>
+
+                    <ul id="desserts">
+                        <li>cake</li>
+                        <li>pie</li>
+                        <li>ice cream</li>
+                    </ul>
+
+                    <script src="index.js"></script>
+                </body>
+
+            -- js side
+
+                const ulElements = document.querySelectorAll("ul");
+
+                ulElements.forEach(ulElement => {
+                    const firstChild = element.firstElementChild;
+                    firstChild.style.backgroundColor = "yellow";
+
+                });
+
+                const element = document.getElementById("fruits");
+                const firstChild = element.firstElementChild;
+
+                firstChild.style.backgroundColor = "yellow";
+
+------------ .lastElementChild ------------
+
+            -- js side
+
+                const ulElements = document.querySelectorAll("ul");
+
+                ulElements.forEach(ulElement => {
+                    const lastChild = element.lastElementChild;
+                    lastChild.style.backgroundColor = "yellow";
+
+                });
+                
+                const element = document.getElementById("fruits");
+                const lastChild = element.lastElementChild;
+
+                lastChild.style.backgroundColor = "yellow";
+
+
+------------ .nextElementSibling ------------
+
+-- html side
+
+    <body>
+
+        <ul id="fruits">
+            <li id="apple">apple</li>
+            <li id="orange">orange</li>
+            <li id="banana">banana</li>
+        </ul>
+
+        <ul id="vegetables">
+            <li id="carrots">carrots</li>
+            <li id="potato">potato</li>
+            <li id="onion">onion</li>
+        </ul>
+
+        <ul id="desserts">
+            <li id="cake">cake</li>
+            <li id="pie">pie</li>
+            <li id="ice-cream">ice cream</li>
+        </ul>
+
+        <script src="index.js"></script>
+    </body>
+
+ -- js side
+
+    const element = document.getElementById("apple");
+    const nextSibling = element.nextElementSibling;
+
+    nextSibling.style.backgroundColor = "yellow";
+
+------------ .previousElementSibling ------------
+
+ -- js side
+
+    const element = document.getElementById("apple");
+    const prevSibling = element.previousElementSibling;
+
+    prevSibling.style.backgroundColor = "yellow";
+
+------------ .parentElement ------------
+
+ -- js side
+
+    const element = document.getElementById("apple");
+    const parent = element.parentElement;
+
+    parent.style.backgroundColor = "yellow";
+
+------------ .children ------------
+
+ -- js side
+
+    const element = document.getElementById("fruits");
+    const children = element.childrenElement;
+
+    Array.from(children).forEach(child => {
+        child.style.backgroundColor = "yellow";
+    });

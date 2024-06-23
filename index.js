@@ -1,30 +1,39 @@
-class Person{
+// let isShown = true;
 
-    constructor(name, age, ...address){
-        this.name = name;
-        this.age = age;
-        this.address = new Address (...address);
-    }
-}
+// document.addEventListener('DOMContentLoaded', (event) =>{
 
-class Address{
+//     var div = document.getElementById("program-title");
 
-    constructor(street, city, country){
-        this.street = street;
-        this.city = city;
-        this.country = country;
-    }
-}
+//     div.addEventListener('click', function() {
 
-const person1 = new Person("Spongebob", 30,
-                "124 Conch st.", "Bikini Bottom", "Int. Waters");
+//         if(isShown){
+//             div.style.right = '90%';
+    
+//             isShown = false;
+//         } else {
+//             div.style.right = '0';
+    
+//             isShown = true;
+//         }
+//     });
+// });
 
-const person2 = new Person("Patirck", 34,
-                "126 Conch st.", "Bikini Bottom", "Int. Waters");
+// const decreaseCount = document.getElementById("decreaseBtn");
+// const resetCount = document.getElementById("resetBtn");
+// const increaseCount = document.getElementById("increaseBtn");
+// const countLabel = document.getElementById("count-label");
+// let count = 0;
 
-const person3 = new Person("Squidward", 45,
-                "125 Conch st.", "Bikini Bottom", "Int. Waters");
+// decreaseCount.onclick = function() {
+//     count--;
+//     countLabel.textContent = count;
+// }
+// increaseCount.onclick = function() {
+//     count++;
+//     countLabel.textContent = count;
+// }
+// resetCount.onclick = function(){
+//     count = 0;
+//     countLabel.textContent = count;
+// }
 
-console.log(person1.address);
-console.log(person2.address);
-console.log(person2.address);

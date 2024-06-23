@@ -91,4 +91,123 @@ const person3 = new Person("Squidward", 45,
 
 console.log(person1.address);
 console.log(person2.address);
-console.log(person2.address);     
+console.log(person2.address);    
+
+--------------------------------------------------------------------------
+
+ARRAY OF OBJECTS
+
+const fruits = [{name: "Apple", color: "Red", calories: 95}, 
+                {name: "Orange", color: "Orange", calories: 45}, 
+                {name: "Banana", color: "Yellow", calories: 105}, 
+                {name: "Coconut", color: "White", calories: 159}, 
+                {name: "Pineapple", color: "Yellow", calories: 37}];
+
+console.log(fruits[1].name)
+-- displays the name of the index 1 fruits which is Orange
+
+fruits.push(name: "Grapes", color: "Purple", calories: 62);
+console.log(fruits);
+-- displays the updated fruits array with the Grapes as the last index
+
+fruits.pop();
+console.log(fruits);
+-- remove the last index of the array
+
+fruits.splice(1, 2);
+console.log(fruits);
+-- remove the orange and banana from the array
+
+---------- forEach() ----------
+
+fruits.forEach(fruits => console.log(fruit.color));
+-- displays the color of each the objects
+
+---------- map() ----------
+
+const fruitNames = fruits.map(fruit => fruit.name);
+const fruitColors = fruits.map(fruit => fruit.color);
+
+console.log(fruitNames);
+-- display an array of all the fruits name
+
+console.log(fruitColors);
+-- display an array of all the fruits color
+
+---------- filter() ----------
+
+const yellowFruits = fruits.filter(fruit => fruit.color === "yellow");
+const lowCalFruits = fruits.filter(fruit => fruit.calories < 100);
+
+console.log(yellowFruits);
+-- display the banana and pineapple
+
+console.log(lowCalFruits);
+-- display apple, orange and pineapple
+
+---------- reduce() ----------
+
+const maxFruitCal = fruits.reduce((max, fruit) => 
+                                   fruit.calories > max.calories ?
+                                   fruit : max);
+
+const minFruitCal = fruits.reduce((min, fruit) => 
+                                   fruit.calories < min.calories ?
+                                   fruit : min);
+
+console.log(maxFruitCal);
+console.log(minFruitCal);
+
+--------------------------------------------------------------------------
+
+DATE OBJECTS = Objects that containes values that represent dates and times
+               These data objects can be changed and formatted
+
+const date = new Date();
+console.log(date);
+-- standard date object
+-- for custom date and time object format, pass in some arguments
+-- Date(year, month, day, hour, minute, second, ms)
+
+const date = new Date(2024, 0, 1, 2, 3, 4, 5);
+console.log(date);
+-- or 
+
+const date = new Date("2024-01-02T12:00:00Z");
+console.log(date);
+
+
+const date = new Date(0);
+console.log(date);
+-- displays Thu Jan 01 1970 07:30:00 (Singapore Standard Time)
+
+const date = new Date(17000000000)
+console.log(date);
+-- display the date 1700000000000 millisecond after Date(0)
+
+const date = new Date();
+
+const year = date.getFullYear();
+const month = date.getMonth();
+const day = date.getDate();
+const hour = date.getHours();
+const minutes = date.getMinutes();
+const seconds = date.getSeconds();
+const dayOfWeek = date.getDay();
+
+console.log(year);
+console.log(month);         // displays  5 since january = 0
+console.log(day);
+console.log(hour);
+console.log(minutes);
+console.log(seconds);
+console.log(dayOfWeek);
+
+-- comparing dates
+
+const date1 = new Date("2023-12-31);
+const date2 = new Date("2024-01-01);
+
+if(date2 > date1){
+    console.log("Happy New Year");
+}
